@@ -21,7 +21,13 @@
         android:id="@+id/helloWorld"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:background="@color/red"
         android:text="@string/hello_world" />
+    <!--textSize    px小  dp大但不随系统设置字体大小改变    sp会随着系统设置改变  -->
+    <!--textColor   xml中颜色配置 如果为6为默认前两位为FF可以看见,java中默认为00透明的看不到  -->
+    <!--background  设置背景颜色    -->
 
     <Button
         android:id="@+id/button"
