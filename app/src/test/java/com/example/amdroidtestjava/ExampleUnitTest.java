@@ -1,4 +1,4 @@
-package com.example.androidtestjava;
+package com.example.amdroidtestjava;
 
 import org.junit.Test;
 
