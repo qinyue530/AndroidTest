@@ -11,4 +11,5 @@
 .externalNativeBuild
 .idea/*
 /.idea/*
-.gradle/*
+/gradle
+/.gradle
