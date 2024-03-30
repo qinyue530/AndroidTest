@@ -26,11 +26,37 @@ public class MainActivity extends AppCompatActivity {
         helloWorld.setTextSize(30);
         //设置字体颜色
         helloWorld.setTextColor(Color.WHITE);
-//        helloWorld.setTextColor(0xFF777777);
+        //xml中颜色配置 如果为6位数字 默认前两位为FF可以看见,java中默认为00透明的看不到
+        helloWorld.setTextColor(0xFFFFFFFF);
         //设置背景颜色
         helloWorld.setBackgroundColor(Color.RED);
-        //获取x按钮
+        //获取按钮
         Button button = findViewById(R.id.button);
+        //按钮点击事件
+        button_click(button);
+        //文本框点击事件
+        textView_click(helloWorld);
+    }
+
+    //textView_点击事件
+    public void textView_click(TextView textView){
+
+        //添加文本框点击事件
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                //由那个页面,跳转到另一个页面
+                intent.setClass(MainActivity.this,NextActivity.class);
+                //开始跳转
+                startActivity(intent);
+            }
+        });
+    }
+
+    //button 点击事件
+    public void button_click(Button button){
+
         //添加按钮点击事件
         button.setOnClickListener(new View.OnClickListener() {
             @Override
