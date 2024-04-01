@@ -5,18 +5,54 @@
     android:id="@+id/next"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:orientation="horizontal"
     tools:context=".NextActivity"
     >
+    <!--orientation 属性 horizontal 垂直方向    -->
 
     <TextView
         android:id="@+id/nextHelloWorld"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next_hello_world"
-        />
+        android:text="@string/next_hello_world" />
 
+    <LinearLayout
+        android:layout_width="169dp"
+        android:layout_height="200sp"
+        android:layout_marginStart="-100dp"
+        android:background="@color/aquamarine"
+        android:padding="10dp"
+        android:layout_gravity="bottom"
+        android:gravity="right|bottom">
+        <!--layout_gravity与上级视图的对齐方式       -->
+        <!--gravity与下级视图的对齐方式,右下角为 right|bottom        -->
+        <!--layout_margin 与周围同级元素的间距,单独设置为 layout_marginLeft,layout_marginRight,layout_marginTop,layout_marginBottom        -->
+        <!--padding 与内部下级元素之间的距离,单独设置为paddingLeft,paddingRight,paddingTop,paddingBottom-->
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@color/red"
+            android:text="@string/buttonNext" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="170dp"
+        android:layout_height="200sp"
+        android:layout_marginStart="55dp"
+        android:background="@color/chartreuse"
+        android:padding="10dp"
+        android:layout_gravity="left"
+        android:gravity="right"
+        >
+        <!--layout_margin 与周围同级元素的间距,单独设置为 layout_marginLeft,layout_marginRight,layout_marginTop,layout_marginBottom        -->
+        <!--padding 与内部下级元素之间的距离,单独设置为 paddingLeft,paddingRight,paddingTop,paddingBottom-->
+        <Button
+            android:layout_width="80sp"
+            android:layout_height="50sp"
+            android:background="@color/grey"
+            android:text="@string/buttonNext"
+            />
+    </LinearLayout>
 
 
 </LinearLayout>

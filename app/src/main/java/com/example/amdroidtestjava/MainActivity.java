@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -12,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.amdroidtestjava.util.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         helloWorld.setBackgroundColor(Color.RED);
         //获取按钮
         Button button = findViewById(R.id.button);
+
+        //获取视图的参数
+        ViewGroup.LayoutParams layoutParams = button.getLayoutParams();
+        //重新赋值视图的高度
+        layoutParams.height = Utils.dp2px(this,50);
+        //重新赋值视图的宽度
+        layoutParams.width = Utils.dp2px(this,80);
+        //重新赋值视图的参数
+        button.setLayoutParams(layoutParams);
+
         //按钮点击事件
         button_click(button);
         //文本框点击事件
