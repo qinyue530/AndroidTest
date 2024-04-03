@@ -38,4 +38,11 @@
     <!--layout_width    match_parent 表示与上级视图保持一致 wrap_conent表示自适应(不能超过上级视图,超过会换行或隐藏) 和以dp为单位的具体尺寸 -->
 
 
+    <Button
+        android:id="@+id/linearActivity"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="@string/linear_Activity"/>
+
+
 </LinearLayout>

@@ -46,13 +46,17 @@ public class MainActivity extends AppCompatActivity {
         button.setLayoutParams(layoutParams);
 
         //按钮点击事件
-        button_click(button);
+        button_click(button , new NextActivity());
         //文本框点击事件
-        textView_click(helloWorld);
+        textView_click(helloWorld,new NextActivity() );
+
+        Button linearActivityButton = findViewById(R.id.linearActivity);
+
+        button_click(linearActivityButton,new LinearActivity());
     }
 
     //textView_点击事件
-    public void textView_click(TextView textView){
+    public void textView_click(TextView textView , AppCompatActivity appCompatActivity){
 
         //添加文本框点击事件
         textView.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 //由那个页面,跳转到另一个页面
-                intent.setClass(MainActivity.this,NextActivity.class);
+                intent.setClass(MainActivity.this,appCompatActivity.getClass());
                 //开始跳转
                 startActivity(intent);
             }
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //button 点击事件
-    public void button_click(Button button){
+    public void button_click(Button button , AppCompatActivity appCompatActivity){
 
         //添加按钮点击事件
         button.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 //由那个页面,跳转到另一个页面
-                intent.setClass(MainActivity.this,NextActivity.class);
+                intent.setClass(MainActivity.this,appCompatActivity.getClass());
                 //开始跳转
                 startActivity(intent);
             }

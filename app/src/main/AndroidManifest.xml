@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AmdroidTestJava"
         tools:targetApi="31">
-        <activity android:name=".NextActivity"/>
+        <activity
+            android:name=".LinearActivity"
+            android:exported="false" />
+        <activity android:name=".NextActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
