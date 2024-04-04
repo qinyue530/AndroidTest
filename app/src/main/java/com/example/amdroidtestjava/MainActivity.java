@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.amdroidtestjava.util.DateUtils;
 import com.example.amdroidtestjava.util.Utils;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         helloWorld.setBackgroundColor(Color.RED);
         //获取按钮
         Button button = findViewById(R.id.button);
-
         //获取视图的参数
         ViewGroup.LayoutParams layoutParams = button.getLayoutParams();
         //重新赋值视图的高度
@@ -101,5 +101,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //button 的 onClick的属性 直接调用方法,已过时 但可用方便以后阅读他人代码
+    public void doClick(View view) {
+        //获取当前view的ID
+        Button doClickButton = findViewById(view.getId());
+
+        doClickButton.setText(DateUtils.getNowTime());
+
     }
 }

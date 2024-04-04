@@ -30,11 +30,14 @@
     <!--textColor   xml中颜色配置 如果为6为默认前两位为FF可以看见,java中默认为00透明的看不到  -->
     <!--background  设置背景颜色    -->
 
+
     <Button
         android:id="@+id/button"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:text="@string/buttonNext"/>
+
+
     <!--layout_width    match_parent 表示与上级视图保持一致 wrap_conent表示自适应(不能超过上级视图,超过会换行或隐藏) 和以dp为单位的具体尺寸 -->
 
 
@@ -60,6 +63,17 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="@string/scroll_view_Activity"/>
+
+    <!--TextView 默认没有背景颜色 文字靠左对齐,保持原有的英文大小写-->
+    <!--Button 有默认的背景颜色和图形且默认居中,textAllCaps设置英文是否自动转为大写 -->
+    <Button
+        android:id="@+id/doClick"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:textAllCaps="true"
+        android:onClick="doClick"
+        android:text="doClick"/>
+
 
 
 </LinearLayout>
