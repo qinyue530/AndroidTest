@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -69,12 +70,17 @@ public class MainActivity extends AppCompatActivity {
         Button scrollViewActivityButton = findViewById(R.id.scrollViewActivity);
 
         view_click(scrollViewActivityButton,new ScrollViewActivity());
+        //长按事件
+        Button doClickButton = findViewById(R.id.doClick);
+
+        view_long_click(doClickButton);
+
     }
 
     //view 点击事件
     public void view_click(View view , AppCompatActivity appCompatActivity){
 
-        //添加按钮点击事件
+        //添加点击事件
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +93,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //view 长按点击事件
+    public void view_long_click(View view){
+
+        //长按点击事件
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Button doClickButton = findViewById(v.getId());
+                doClickButton.setText(doClickButton.getText()+"长按事件");
+                //有多层view嵌套时,如果为true则使用当前的事件,如果为false 则同时触发点击事件
+                //为false时 顺序为长按时触发长按事件,松开触发点击事件
+                return false;
+            }
+        });
+    }
+
     //button 的 onClick的属性 直接调用方法,已过时 但可用方便以后阅读他人代码
     public void doClick(View view) {
         //获取当前view的ID
@@ -95,4 +117,5 @@ public class MainActivity extends AppCompatActivity {
         doClickButton.setText(DateUtils.getNowTime());
 
     }
+
 }
