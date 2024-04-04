@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.width = Utils.dp2px(this,80);
         //重新赋值视图的参数
         button.setLayoutParams(layoutParams);
-
         //按钮点击事件
         button_click(button , new NextActivity());
         //文本框点击事件
@@ -66,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         Button gridActivityButton = findViewById(R.id.gridActivity);
 
         button_click(gridActivityButton,new GridActivity());
+        //垂直滚动布局
+        Button scrollViewActivityButton = findViewById(R.id.scrollViewActivity);
+
+        button_click(scrollViewActivityButton,new ScrollViewActivity());
     }
 
     //textView_点击事件
