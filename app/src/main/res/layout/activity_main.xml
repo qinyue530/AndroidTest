@@ -5,9 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:background="@color/blue"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
     <!--orientation 属性 vertical 垂直方向    -->
     <!--注释和修改掉自动生成代码,使用线性布局-->
@@ -19,82 +19,95 @@
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintStart_toStartOf="parent"-->
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
-    <TextView
-        android:id="@+id/helloWorld"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="@color/white"
-        android:background="@color/red" />
-    <!--textSize    px小  dp大但不随系统设置字体大小改变    sp会随着系统设置改变  -->
-    <!--textColor   xml中颜色配置 如果为6为默认前两位为FF可以看见,java中默认为00透明的看不到  -->
-    <!--background  设置背景颜色    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/helloWorld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
+            <!--textSize    px小  dp大但不随系统设置字体大小改变    sp会随着系统设置改变  -->
+            <!--textColor   xml中颜色配置 如果为6为默认前两位为FF可以看见,java中默认为00透明的看不到  -->
+            <!--background  设置背景颜色    -->
 
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:text="@string/buttonNext"/>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/buttonNext" />
 
 
-    <!--layout_width    match_parent 表示与上级视图保持一致 wrap_conent表示自适应(不能超过上级视图,超过会换行或隐藏) 和以dp为单位的具体尺寸 -->
+            <!--layout_width    match_parent 表示与上级视图保持一致 wrap_conent表示自适应(不能超过上级视图,超过会换行或隐藏) 和以dp为单位的具体尺寸 -->
 
 
-    <Button
-        android:id="@+id/linearActivity"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:text="@string/linear_Activity"/>
+            <Button
+                android:id="@+id/linearActivity"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/linear_Activity" />
 
-    <Button
-        android:id="@+id/relativeActivity"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:text="@string/relative_Activity"/>
+            <Button
+                android:id="@+id/relativeActivity"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/relative_Activity" />
 
-    <Button
-        android:id="@+id/gridActivity"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:text="@string/grid_Activity"/>
-    <Button
-        android:id="@+id/scrollViewActivity"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="@string/scroll_view_Activity"/>
+            <Button
+                android:id="@+id/gridActivity"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/grid_Activity" />
 
-    <!--TextView 默认没有背景颜色 文字靠左对齐,保持原有的英文大小写-->
-    <!--Button 有默认的背景颜色和图形且默认居中,textAllCaps设置英文是否自动转为大写 -->
-    <Button
-        android:id="@+id/doClick"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:textAllCaps="true"
-        android:onClick="doClick"
-        android:text="doClick"/>
+            <Button
+                android:id="@+id/scrollViewActivity"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="@string/scroll_view_Activity" />
 
-    <ImageView
-        android:id="@+id/tigger"
-        android:layout_width="200sp"
-        android:layout_height="100sp"
-        android:src="@drawable/tigger"
-        android:scaleType="centerInside"/>
-    <!--scaleType属性 :
-    fitXY 拉伸图片填满,会变形,
-    fitStart 保持比例拉伸 视图片位于上方或左侧,
-    fitCenter 保持比例拉伸 视图片位于中间,
-    fitEnd 保持比例拉伸 视图片位于下方或右侧,
-    center 保持图片原有尺寸 使图片位于中间,
-    centerCrop 拉伸图片充满视图, 使图片位于中间,
-    centerInside  保持比例 只缩小不放大 使图片位于中间-->
+            <!--TextView 默认没有背景颜色 文字靠左对齐,保持原有的英文大小写-->
+            <!--Button 有默认的背景颜色和图形且默认居中,textAllCaps设置英文是否自动转为大写 -->
+            <Button
+                android:id="@+id/doClick"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:onClick="doClick"
+                android:text="doClick"
+                android:textAllCaps="true" />
 
-    <ImageView
-        android:id="@+id/tiggerJava"
-        android:layout_width="100sp"
-        android:layout_height="100sp" />
+            <ImageView
+                android:id="@+id/tigger"
+                android:layout_width="200sp"
+                android:layout_height="100sp"
+                android:scaleType="centerInside"
+                android:src="@drawable/tigger" />
+            <!--scaleType属性 :
+            fitXY 拉伸图片填满,会变形,
+            fitStart 保持比例拉伸 视图片位于上方或左侧,
+            fitCenter 保持比例拉伸 视图片位于中间,
+            fitEnd 保持比例拉伸 视图片位于下方或右侧,
+            center 保持图片原有尺寸 使图片位于中间,
+            centerCrop 拉伸图片充满视图, 使图片位于中间,
+            centerInside  保持比例 只缩小不放大 使图片位于中间-->
+
+            <ImageView
+                android:id="@+id/tiggerJava"
+                android:layout_width="100sp"
+                android:layout_height="100sp" />
 
 
 
-
+            
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
