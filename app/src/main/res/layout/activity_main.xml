@@ -74,6 +74,27 @@
         android:onClick="doClick"
         android:text="doClick"/>
 
+    <ImageView
+        android:id="@+id/tigger"
+        android:layout_width="200sp"
+        android:layout_height="100sp"
+        android:src="@drawable/tigger"
+        android:scaleType="centerInside"/>
+    <!--scaleType属性 :
+    fitXY 拉伸图片填满,会变形,
+    fitStart 保持比例拉伸 视图片位于上方或左侧,
+    fitCenter 保持比例拉伸 视图片位于中间,
+    fitEnd 保持比例拉伸 视图片位于下方或右侧,
+    center 保持图片原有尺寸 使图片位于中间,
+    centerCrop 拉伸图片充满视图, 使图片位于中间,
+    centerInside  保持比例 只缩小不放大 使图片位于中间-->
+
+    <ImageView
+        android:id="@+id/tiggerJava"
+        android:layout_width="100sp"
+        android:layout_height="100sp" />
+
+
 
 
 </LinearLayout>

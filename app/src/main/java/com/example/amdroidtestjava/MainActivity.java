@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -75,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         Button doClickButton = findViewById(R.id.doClick);
 
         view_long_click(doClickButton);
+        //显示图片
+        ImageView imageView = findViewById(R.id.tiggerJava);
+
+        imageView.setImageResource(R.drawable.tigger);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
     }
 
