@@ -3,6 +3,7 @@ package com.example.amdroidtestjava;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -114,7 +115,21 @@ public class MainActivity extends AppCompatActivity {
         //获取当前view的ID
         Button doClickButton = findViewById(view.getId());
 
-        doClickButton.setText(DateUtils.getNowTime());
+        CountDownTimer countDownTimer = new CountDownTimer(5000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                doClickButton.setEnabled(false);
+                doClickButton.setTextColor(Color.WHITE);
+                doClickButton.setText("倒计时:" + millisUntilFinished/1000);
+            }
+
+            @Override
+            public void onFinish() {
+                doClickButton.setEnabled(true);
+                doClickButton.setText(DateUtils.getNowTime());
+            }
+        }.start();
+
 
     }
 
