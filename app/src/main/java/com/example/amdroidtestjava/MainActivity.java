@@ -50,48 +50,32 @@ public class MainActivity extends AppCompatActivity {
         //重新赋值视图的参数
         button.setLayoutParams(layoutParams);
         //按钮点击事件
-        button_click(button , new NextActivity());
+        view_click(button , new NextActivity());
         //文本框点击事件
-        textView_click(helloWorld,new NextActivity() );
+        view_click(helloWorld,new NextActivity() );
         //线性布局
         Button linearActivityButton = findViewById(R.id.linearActivity);
 
-        button_click(linearActivityButton,new LinearActivity());
+        view_click(linearActivityButton,new LinearActivity());
         //相对布局
         Button relativeActivityButton = findViewById(R.id.relativeActivity);
 
-        button_click(relativeActivityButton,new RelativeActivity());
+        view_click(relativeActivityButton,new RelativeActivity());
         //网格布局
         Button gridActivityButton = findViewById(R.id.gridActivity);
 
-        button_click(gridActivityButton,new GridActivity());
+        view_click(gridActivityButton,new GridActivity());
         //垂直滚动布局
         Button scrollViewActivityButton = findViewById(R.id.scrollViewActivity);
 
-        button_click(scrollViewActivityButton,new ScrollViewActivity());
+        view_click(scrollViewActivityButton,new ScrollViewActivity());
     }
 
-    //textView_点击事件
-    public void textView_click(TextView textView , AppCompatActivity appCompatActivity){
-
-        //添加文本框点击事件
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                //由那个页面,跳转到另一个页面
-                intent.setClass(MainActivity.this,appCompatActivity.getClass());
-                //开始跳转
-                startActivity(intent);
-            }
-        });
-    }
-
-    //button 点击事件
-    public void button_click(Button button , AppCompatActivity appCompatActivity){
+    //view 点击事件
+    public void view_click(View view , AppCompatActivity appCompatActivity){
 
         //添加按钮点击事件
-        button.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
