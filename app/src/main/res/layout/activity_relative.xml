@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    tools:context=".RelativeActivity">
+
+    <TextView
+        android:id="@+id/layout_centerInParent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_centerInParent="true"
+        android:text="中间"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/layout_centerVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_centerVertical="true"
+        android:text="垂直中间"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/layout_centerHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_centerHorizontal="true"
+        android:text="水平中间"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/layout_alignParentLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_alignParentLeft="true"
+        android:text="上级左对齐"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/layout_alignParentRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_alignParentRight="true"
+        android:text="上级右对齐"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/layout_alignParentTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_alignParentTop="true"
+        android:text="上级顶部对齐"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/layout_alignParentBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_alignParentBottom="true"
+        android:text="上级底部对齐"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/zjzb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_toLeftOf="@+id/layout_centerInParent"
+        android:layout_alignBottom="@+id/layout_centerInParent"
+        android:text="在中间的左边"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/zjyb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_toRightOf="@+id/layout_centerInParent"
+        android:layout_alignTop="@+id/layout_centerInParent"
+        android:text="在中间的右边"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/dbzj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_alignBottom="@+id/layout_alignParentBottom"
+        android:layout_centerHorizontal="true"
+        android:text="在底部中间"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/yxj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="在右下角"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/yczj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="右侧中间"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/zjsm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_above="@+id/layout_centerInParent"
+        android:layout_centerInParent="true"
+        android:text="中间上面"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <TextView
+        android:id="@+id/zjxm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/chocolate"
+        android:layout_below="@+id/layout_centerInParent"
+        android:layout_centerInParent="true"
+        android:text="中间下面"
+        android:textColor="@color/aliceblue"
+        android:textSize="11dp"/>
+    <!-- RelativeLayout 与平级或上级视图的相对位置,如果不设定,默认显示在上级视图的左上角 -->
+    <!--layout_toLeftOf  在指定视图的左边-->
+    <!--layout_toRightOf 在指定视图的右边-->
+    <!--layout_above     在指定视图的上边-->
+    <!--layout_below     在指定视图的下边-->
+    <!--layout_alignLeft    与指定视图左对齐-->
+    <!--layout_alignRight   与指定视图右对齐-->
+    <!--layout_alignTop     与指定视图上对齐-->
+    <!--layout_alignBottom  与指定视图下对齐-->
+    <!--layout_centerInParent    在上级视图中间   -->
+    <!--layout_centerHorizontal  在上级视图水平居中-->
+    <!--layout_centerVertical    在上级视图垂直居中-->
+    <!--layout_alignParentLeft      与上级视图左对齐-->
+    <!--layout_alignParentRight     与上级视图右对齐-->
+    <!--layout_alignParentTop       与上级视图上对齐-->
+    <!--layout_alignParentBottom    与上级视图下对齐-->
+
+</RelativeLayout>

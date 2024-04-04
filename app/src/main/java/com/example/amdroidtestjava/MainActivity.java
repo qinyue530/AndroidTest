@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         Button linearActivityButton = findViewById(R.id.linearActivity);
 
         button_click(linearActivityButton,new LinearActivity());
+
+        Button relativeActivityButton = findViewById(R.id.relativeActivity);
+
+        button_click(relativeActivityButton,new RelativeActivity());
     }
 
     //textView_点击事件
