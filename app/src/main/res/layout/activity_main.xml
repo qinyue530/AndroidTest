@@ -50,4 +50,10 @@
         android:layout_height="50dp"
         android:text="@string/relative_Activity"/>
 
+    <Button
+        android:id="@+id/gridActivity"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="@string/grid_Activity"/>
+
 </LinearLayout>

@@ -54,14 +54,18 @@ public class MainActivity extends AppCompatActivity {
         button_click(button , new NextActivity());
         //文本框点击事件
         textView_click(helloWorld,new NextActivity() );
-
+        //线性布局
         Button linearActivityButton = findViewById(R.id.linearActivity);
 
         button_click(linearActivityButton,new LinearActivity());
-
+        //相对布局
         Button relativeActivityButton = findViewById(R.id.relativeActivity);
 
         button_click(relativeActivityButton,new RelativeActivity());
+        //网格布局
+        Button gridActivityButton = findViewById(R.id.gridActivity);
+
+        button_click(gridActivityButton,new GridActivity());
     }
 
     //textView_点击事件
