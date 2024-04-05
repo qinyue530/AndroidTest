@@ -94,6 +94,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 //由那个页面,跳转到另一个页面
                 intent.setClass(MainActivity.this,appCompatActivity.getClass());
+                //activity 启动模式
+                //FLAG_ACTIVITY_NEW_TASK        开辟一个新的任务栈
+                //FLAG_ACTIVITY_SINGLE_TOP      栈顶为待跳转的活动实例,重用栈顶实例
+                //FLAG_ACTIVITY_CLEAR_TASK      跳转到新页面时,栈中原有实例被清空
+                //FLAG_ACTIVITY_CLEAR_TOP       栈中存在待跳转活动实例时,重新创建一个新实例,并清空实例上方所有实例
+                //FLAG_ACTIVITY_NO_HISTORY      栈中不保存新启动的活动实例
+
+
+                //跳转到新页面时清空栈,同时开辟一个新的活动栈
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 //开始跳转
                 startActivity(intent);
             }
