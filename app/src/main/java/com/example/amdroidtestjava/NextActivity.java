@@ -47,7 +47,7 @@ public class NextActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
-        bundle.putString("text","从上一个视图响应的数据");
+        bundle.putString("text",getString(R.string.java_get_xmlString) +":从上一个视图响应的数据");
         bundle.putString("time",DateUtils.getNowTime());
         intent.putExtras(bundle);
         //携带数据返回

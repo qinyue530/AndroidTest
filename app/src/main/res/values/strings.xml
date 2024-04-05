@@ -10,4 +10,5 @@
     <string name="scroll_view_Activity">滚动视图</string>
     <string name="btn_dial">电话</string>
     <string name="btn_sms">短信</string>
+    <string name="java_get_xmlString">java获取strings.xml中配置的</string>
 </resources>
