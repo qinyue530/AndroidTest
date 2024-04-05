@@ -47,17 +47,17 @@ public class MainActivity extends AppCompatActivity {
         //设置背景颜色
         helloWorld.setBackgroundColor(Color.RED);
         //获取按钮
-        Button button = findViewById(R.id.button);
+        Button btn_next = findViewById(R.id.btn_next);
         //获取视图的参数
-        ViewGroup.LayoutParams layoutParams = button.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = btn_next.getLayoutParams();
         //重新赋值视图的高度
         layoutParams.height = Utils.dp2px(this,50);
         //重新赋值视图的宽度
         layoutParams.width = Utils.dp2px(this,80);
         //重新赋值视图的参数
-        button.setLayoutParams(layoutParams);
+        btn_next.setLayoutParams(layoutParams);
         //按钮点击事件
-        view_click(button , new NextActivity());
+        view_click(btn_next , new NextActivity());
         //文本框点击事件
         view_click(helloWorld,new NextActivity() );
         //线性布局
@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
         //添加点击事件
         view.setOnClickListener(new View.OnClickListener() {
-
             Intent intent = new Intent();
             @Override
             public void onClick(View v) {
@@ -111,16 +110,20 @@ public class MainActivity extends AppCompatActivity {
                     //声明一个拨号的uri
                     Uri uri = Uri.parse("tel:" + "123456");
                     intent.setData(uri);
-                    startActivity(intent);
-
                 }else if(v.getId() == R.id.btn_sms){
                     //隐视意图
                     intent.setAction(intent.ACTION_SENDTO);
                     //声明一个短信发送的目标号码uri
                     Uri uri = Uri.parse("smsto:" + "123456");
                     intent.setData(uri);
-                    startActivity(intent);
-                }else {
+                }else if(view.getId() == R.id.btn_next){
+                    //像下一个界面发送数据
+                    Bundle bundle = new Bundle();
+                    bundle.putString("text","主视图跳转传送数据");
+                    bundle.putString("time",DateUtils.getNowTime());
+                    intent.putExtras(bundle);
+                    intent.setClass(MainActivity.this,appCompatActivity.getClass());
+                }else{
                     //显视意图
                     //由那个页面,跳转到另一个页面
                     //1.在intent构造函数中指定
@@ -130,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
                     //intent.setClass(MainActivity.this,appCompatActivity.getClass());
                     //3.调用意图对象的setComponent方法
                     ComponentName componentName = new ComponentName(MainActivity.this,appCompatActivity.getClass());
-
                     intent.setComponent(componentName);
                     //activity 启动模式
                     //FLAG_ACTIVITY_NEW_TASK        开辟一个新的任务栈
@@ -138,14 +140,10 @@ public class MainActivity extends AppCompatActivity {
                     //FLAG_ACTIVITY_CLEAR_TASK      跳转到新页面时,栈中原有实例被清空
                     //FLAG_ACTIVITY_CLEAR_TOP       栈中存在待跳转活动实例时,重新创建一个新实例,并清空实例上方所有实例
                     //FLAG_ACTIVITY_NO_HISTORY      栈中不保存新启动的活动实例
-
-
                     //跳转到新页面时清空栈,同时开辟一个新的活动栈
                     //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    //开始跳转
-                    startActivity(intent);
                 }
+                startActivity(intent);
             }
         });
     }
