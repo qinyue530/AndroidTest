@@ -47,15 +47,24 @@
                 android:layout_height="50dp"
                 android:text="@string/buttonNext" />
 
-
             <!--layout_width    match_parent 表示与上级视图保持一致 wrap_conent表示自适应(不能超过上级视图,超过会换行或隐藏) 和以dp为单位的具体尺寸 -->
 
 
             <Button
                 android:id="@+id/linearActivity"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_launcher_foreground"
+                android:textColor="@color/black"
+                android:drawablePadding="1dp"
                 android:text="@string/linear_Activity" />
+            <!--drawableLeft 背景图,在文字左侧
+                drawableLeft 背景图,在文字右侧
+                drawableTop  背景图,在文字上方
+                drawableLeft 背景图,在文字左面
+                drawableRight 背景图,在文字有面
+                drawablePadding 背景图与文字间距
+                -->
 
             <Button
                 android:id="@+id/relativeActivity"
@@ -105,9 +114,15 @@
                 android:layout_width="100sp"
                 android:layout_height="100sp" />
 
+            <!--ImageButton 只能显示图片,不能显示文字,可以实现前景和背景两图片且会等比例缩放,
+                有默认背景,ImageView没有
+                默认缩放类型为center, ImageView 默认缩放类型为fitCenter
+                foreground 前景图
+                background 背景图-->
+            <!--button 显示图片会使图片变形且只能展示一张图片 -->
 
 
-            
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
