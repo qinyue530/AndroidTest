@@ -1,5 +1,6 @@
 package com.example.amdroidtestjava;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -24,7 +29,7 @@ import com.example.amdroidtestjava.util.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    ActivityResultLauncher<Intent> intentActivityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +99,21 @@ public class MainActivity extends AppCompatActivity {
 
         view_click(btn_sms,null);
 
+        //获取上一个页面返回的数据
+        intentActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult o) {
+                if(o.getResultCode()== Activity.RESULT_OK){
+                    Bundle bundle = o.getData().getExtras();
+                    String text = bundle.getString("text");
+                    String time = bundle.getString("time");
+                    helloWorld.setText(time + " " + text);
+                }else{
+                    helloWorld.setText("上一页面数据返回失败");
+                }
+            }
+        });
+
     }
 
     //view 点击事件
@@ -110,12 +130,14 @@ public class MainActivity extends AppCompatActivity {
                     //声明一个拨号的uri
                     Uri uri = Uri.parse("tel:" + "123456");
                     intent.setData(uri);
+                    startActivity(intent);
                 }else if(v.getId() == R.id.btn_sms){
                     //隐视意图
                     intent.setAction(intent.ACTION_SENDTO);
                     //声明一个短信发送的目标号码uri
                     Uri uri = Uri.parse("smsto:" + "123456");
                     intent.setData(uri);
+                    startActivity(intent);
                 }else if(view.getId() == R.id.btn_next){
                     //像下一个界面发送数据
                     Bundle bundle = new Bundle();
@@ -123,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     bundle.putString("time",DateUtils.getNowTime());
                     intent.putExtras(bundle);
                     intent.setClass(MainActivity.this,appCompatActivity.getClass());
+                    intentActivityResultLauncher.launch(intent);
                 }else{
                     //显视意图
                     //由那个页面,跳转到另一个页面
@@ -142,8 +165,9 @@ public class MainActivity extends AppCompatActivity {
                     //FLAG_ACTIVITY_NO_HISTORY      栈中不保存新启动的活动实例
                     //跳转到新页面时清空栈,同时开辟一个新的活动栈
                     //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
-                startActivity(intent);
+
             }
         });
     }

@@ -1,11 +1,16 @@
 package com.example.amdroidtestjava;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -34,10 +39,19 @@ public class NextActivity extends AppCompatActivity implements View.OnClickListe
         String time = bundle.getString("time");
         textView.setText(time + " " + text);
 
+
+
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putString("text","从上一个视图响应的数据");
+        bundle.putString("time",DateUtils.getNowTime());
+        intent.putExtras(bundle);
+        //携带数据返回
+        setResult(Activity.RESULT_OK,intent);
         finish();
     }
 
