@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     Bundle bundle = o.getData().getExtras();
                     String text = bundle.getString("text");
                     String time = bundle.getString("time");
+                    helloWorld.setTextSize(15);
                     helloWorld.setText(time + " " + text);
                 }else{
                     helloWorld.setText("上一页面数据返回失败");

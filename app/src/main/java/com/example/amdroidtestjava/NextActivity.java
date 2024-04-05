@@ -2,6 +2,8 @@ package com.example.amdroidtestjava;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +51,16 @@ public class NextActivity extends AppCompatActivity implements View.OnClickListe
         Bundle bundle = new Bundle();
         bundle.putString("text",getString(R.string.java_get_xmlString) +":从上一个视图响应的数据");
         bundle.putString("time",DateUtils.getNowTime());
+        PackageManager packageManager = getPackageManager();
+        //获取配置的元数据
+        try {
+            ActivityInfo activityInfo = packageManager.getActivityInfo(getComponentName(),PackageManager.GET_META_DATA);
+            Bundle metaBundle = activityInfo.metaData;
+            String metaString = metaBundle.getString("metaDate");
+            bundle.putString("text" , bundle.getString("text") + "\n " + metaString);
+        } catch (PackageManager.NameNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         intent.putExtras(bundle);
         //携带数据返回
         setResult(Activity.RESULT_OK,intent);

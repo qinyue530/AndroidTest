@@ -24,7 +24,10 @@
         <activity
             android:name=".LinearActivity"
             android:exported="false" />
-        <activity android:name=".NextActivity" />
+        <activity android:name=".NextActivity"
+            android:exported="false" >
+            <meta-data android:name="metaDate" android:value="metaDate"/>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
