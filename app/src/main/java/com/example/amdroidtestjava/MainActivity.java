@@ -1,7 +1,9 @@
 package com.example.amdroidtestjava;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -21,6 +23,8 @@ import com.example.amdroidtestjava.util.DateUtils;
 import com.example.amdroidtestjava.util.Utils;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageResource(R.drawable.tigger);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
+        Button btn_dial = findViewById(R.id.btn_dial);
+
+        view_click(btn_dial,null);
+
+        Button btn_sms = findViewById(R.id.btn_sms);
+
+        view_click(btn_sms,null);
+
     }
 
     //view 点击事件
@@ -89,24 +101,51 @@ public class MainActivity extends AppCompatActivity {
 
         //添加点击事件
         view.setOnClickListener(new View.OnClickListener() {
+
+            Intent intent = new Intent();
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                //由那个页面,跳转到另一个页面
-                intent.setClass(MainActivity.this,appCompatActivity.getClass());
-                //activity 启动模式
-                //FLAG_ACTIVITY_NEW_TASK        开辟一个新的任务栈
-                //FLAG_ACTIVITY_SINGLE_TOP      栈顶为待跳转的活动实例,重用栈顶实例
-                //FLAG_ACTIVITY_CLEAR_TASK      跳转到新页面时,栈中原有实例被清空
-                //FLAG_ACTIVITY_CLEAR_TOP       栈中存在待跳转活动实例时,重新创建一个新实例,并清空实例上方所有实例
-                //FLAG_ACTIVITY_NO_HISTORY      栈中不保存新启动的活动实例
+                if(v.getId() == R.id.btn_dial){
+                    //隐视意图
+                    intent.setAction(intent.ACTION_DIAL);
+                    //声明一个拨号的uri
+                    Uri uri = Uri.parse("tel:" + "123456");
+                    intent.setData(uri);
+                    startActivity(intent);
+
+                }else if(v.getId() == R.id.btn_sms){
+                    //隐视意图
+                    intent.setAction(intent.ACTION_SENDTO);
+                    //声明一个短信发送的目标号码uri
+                    Uri uri = Uri.parse("smsto:" + "123456");
+                    intent.setData(uri);
+                    startActivity(intent);
+                }else {
+                    //显视意图
+                    //由那个页面,跳转到另一个页面
+                    //1.在intent构造函数中指定
+                    //Intent intent = new Intent(MainActivity.this,appCompatActivity.getClass());
+                    //2.调用setClass方法
+                    //Intent intent = new Intent();
+                    //intent.setClass(MainActivity.this,appCompatActivity.getClass());
+                    //3.调用意图对象的setComponent方法
+                    ComponentName componentName = new ComponentName(MainActivity.this,appCompatActivity.getClass());
+
+                    intent.setComponent(componentName);
+                    //activity 启动模式
+                    //FLAG_ACTIVITY_NEW_TASK        开辟一个新的任务栈
+                    //FLAG_ACTIVITY_SINGLE_TOP      栈顶为待跳转的活动实例,重用栈顶实例
+                    //FLAG_ACTIVITY_CLEAR_TASK      跳转到新页面时,栈中原有实例被清空
+                    //FLAG_ACTIVITY_CLEAR_TOP       栈中存在待跳转活动实例时,重新创建一个新实例,并清空实例上方所有实例
+                    //FLAG_ACTIVITY_NO_HISTORY      栈中不保存新启动的活动实例
 
 
-                //跳转到新页面时清空栈,同时开辟一个新的活动栈
-                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //跳转到新页面时清空栈,同时开辟一个新的活动栈
+                    //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                //开始跳转
-                startActivity(intent);
+                    //开始跳转
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -149,5 +188,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 }

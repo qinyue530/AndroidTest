@@ -8,4 +8,6 @@
     <string name="relative_Activity">相对布局</string>
     <string name="grid_Activity">网格布局</string>
     <string name="scroll_view_Activity">滚动视图</string>
+    <string name="btn_dial">电话</string>
+    <string name="btn_sms">短信</string>
 </resources>

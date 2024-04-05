@@ -120,8 +120,16 @@
                 foreground 前景图
                 background 背景图-->
             <!--button 显示图片会使图片变形且只能展示一张图片 -->
-
-
+            <Button
+                android:id="@+id/btn_dial"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/btn_dial" />
+            <Button
+                android:id="@+id/btn_sms"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/btn_sms" />
 
         </LinearLayout>
     </ScrollView>

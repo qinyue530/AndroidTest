@@ -28,6 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <!--exported 是否允许其他的应用启动本应用 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
