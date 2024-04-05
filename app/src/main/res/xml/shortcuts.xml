@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="aaa"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:shortcutLongLabel="@string/btn_sms"
+        android:shortcutShortLabel="@string/btn_dial">
+        <!-- shortcutLongLabel与shortcutShortLabel 不能直接写字符串,需要定义到string.xml l里面-->
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.amdroidtestjava"
+            android:targetClass="com.example.amdroidtestjava.GridActivity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>
