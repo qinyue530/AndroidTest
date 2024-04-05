@@ -1,6 +1,8 @@
 package com.example.amdroidtestjava;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class NextActivity extends AppCompatActivity {
+public class NextActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,5 +21,12 @@ public class NextActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        findViewById(R.id.backButton).setOnClickListener(this);
+        findViewById(R.id.backButtonA).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        finish();
     }
 }

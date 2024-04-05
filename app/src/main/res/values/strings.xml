@@ -3,6 +3,7 @@
     <string name="hello_world">Hello World!</string>
     <string name="next_hello_world">Next Hello World!</string>
     <string name="buttonNext">跳转</string>
+    <string name="buttonBack">返回</string>
     <string name="linear_Activity">线性布局</string>
     <string name="relative_Activity">相对布局</string>
     <string name="grid_Activity">网格布局</string>

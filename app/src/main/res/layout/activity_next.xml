@@ -29,10 +29,11 @@
         <!--layout_margin 与周围同级元素的间距,单独设置为 layout_marginLeft,layout_marginRight,layout_marginTop,layout_marginBottom        -->
         <!--padding 与内部下级元素之间的距离,单独设置为paddingLeft,paddingRight,paddingTop,paddingBottom-->
         <Button
+            android:id="@+id/backButton"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:background="@color/red"
-            android:text="@string/buttonNext" />
+            android:text="@string/buttonBack" />
     </LinearLayout>
 
     <LinearLayout
@@ -47,10 +48,11 @@
         <!--layout_margin 与周围同级元素的间距,单独设置为 layout_marginLeft,layout_marginRight,layout_marginTop,layout_marginBottom        -->
         <!--padding 与内部下级元素之间的距离,单独设置为 paddingLeft,paddingRight,paddingTop,paddingBottom-->
         <Button
+            android:id="@+id/backButtonA"
             android:layout_width="80sp"
             android:layout_height="50sp"
             android:background="@color/grey"
-            android:text="@string/buttonNext"
+            android:text="@string/buttonBack"
             />
     </LinearLayout>
 
