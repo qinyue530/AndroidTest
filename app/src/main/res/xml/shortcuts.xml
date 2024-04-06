@@ -5,8 +5,8 @@
         android:shortcutId="aaa"
         android:enabled="true"
         android:icon="@drawable/ic_launcher_foreground"
-        android:shortcutLongLabel="@string/btn_sms"
-        android:shortcutShortLabel="@string/btn_dial">
+        android:shortcutLongLabel="@string/grid_Activity"
+        android:shortcutShortLabel="@string/grid_Activity">
         <!-- shortcutLongLabel与shortcutShortLabel 不能直接写字符串,需要定义到string.xml l里面-->
         <intent
             android:action="android.intent.action.VIEW"
