@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 指定形状内部填充颜色 -->
+    <solid android:color="@color/yellow"/>
+    <!-- 指定形状轮廓的粗细和颜色-->
+    <stroke android:color="@color/red"
+        android:width="5dp"
+        android:dashGap="10dp"
+        android:dashWidth="10dp"/>
+    <!-- 指定形状四个圆角的半径 -->
+    <corners android:radius="10dp"/>
+    <!--渐变 -->
+    <gradient android:type="sweep"
+        android:startColor="@color/yellow"
+        android:endColor="@color/green"/>
+
+    <!-- size 尺寸, stroke描边,corners圆角,solid填充 ,padding间隔 ,gradient渐变 -->
+
+    <!--shape 默认值为rectangle 矩形
+        oval 圆形,此时corners节点失效
+        line 直线, 此时必须设置 stroke描边
+        ring 圆环-->
+</shape>

@@ -51,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
         helloWorld.setTextColor(0xFFFFFFFF);
         //设置背景颜色
         helloWorld.setBackgroundColor(Color.RED);
+        //设置背景形状
+//        helloWorld.setBackgroundResource(R.drawable.shape_rect_gold);
         //获取按钮
-        Button btn_next = findViewById(R.id.btn_next);
+        Button btn_next = findViewById(R.id.gridActivity);
         //获取视图的参数
         ViewGroup.LayoutParams layoutParams = btn_next.getLayoutParams();
         //重新赋值视图的高度
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         //按钮点击事件
         view_click(btn_next , new NextActivity());
         //文本框点击事件
-        view_click(helloWorld,new NextActivity() );
+        view_click(helloWorld,new GridActivity() );
         //线性布局
         Button linearActivityButton = findViewById(R.id.linearActivity);
 
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     String time = bundle.getString("time");
                     helloWorld.setTextSize(15);
                     helloWorld.setText(time + " " + text);
+//                    helloWorld.setBackgroundResource(R.drawable.shape_oval_ose);
                 }else{
                     helloWorld.setText("上一页面数据返回失败");
                 }
