@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         //设置背景形状
 //        helloWorld.setBackgroundResource(R.drawable.shape_rect_gold);
         //获取按钮
-        Button btn_next = findViewById(R.id.gridActivity);
+        Button btn_next = findViewById(R.id.btn_next);
         //获取视图的参数
         ViewGroup.LayoutParams layoutParams = btn_next.getLayoutParams();
         //重新赋值视图的高度
