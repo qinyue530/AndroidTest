@@ -98,6 +98,24 @@
                     android:text="女"/>
             </RadioGroup>
 
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入信息"
+                android:textColorHint="@color/red"
+                android:background="@drawable/btn_nine_selector"
+                android:maxLength="10"
+                android:inputType="text"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入密码"
+                android:background="@drawable/btn_nine_selector"
+                android:maxLength="10"
+                android:inputType="textPassword"/>
+
+
+
 
         </LinearLayout>
     </ScrollView>
