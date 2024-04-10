@@ -59,12 +59,44 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/checkBoxTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:background="@drawable/btn_nine_selector"
                 android:text="复选框"/>
+
+            <Switch
+                android:id="@+id/switchTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="switch开关"
+                android:background="@drawable/btn_nine_selector"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+            <TextView
+                android:id="@+id/radioGroupText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请选择您的性别" />
+            <RadioGroup
+                android:id="@+id/radioGroupTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:background="@drawable/btn_nine_selector"
+                    android:text="男"/>
+                <RadioButton
+                    android:id="@+id/woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_nine_selector"
+                    android:text="女"/>
+            </RadioGroup>
 
 
         </LinearLayout>
