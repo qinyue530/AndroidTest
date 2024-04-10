@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector  xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:drawable="@mipmap/button_onoff_indicator_on"  />
+    <item android:state_checked="true" android:drawable="@mipmap/button_onoff_indicator_on"  />
+    <item android:state_focused="true" android:drawable="@mipmap/button_onoff_indicator_on"  />
+    <item android:state_selected="true" android:drawable="@mipmap/button_onoff_indicator_on"  />
     <item  android:drawable="@mipmap/button_onoff_indicator_off" />
+    <!--state_pressed  是否按下  按钮Button
+        state_checked  是否勾选  复选框CheckBox、单选按钮RadioButton
+        state_focused  是否获取焦点   文本编辑框 EditText
+        state_selected 是否选中  各空间通用 -->
 </selector>
