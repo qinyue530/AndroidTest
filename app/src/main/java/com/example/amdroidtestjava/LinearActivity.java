@@ -108,16 +108,17 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
 
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            //文本改变之前触发
         }
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            //文本改变过程中触发
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
+            //文本改变后触发
             if(editable.length() == maxLength){
                 //隐藏软键盘
                 Utils.hideOneInputMethod(LinearActivity.this,editText);
