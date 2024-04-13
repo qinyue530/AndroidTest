@@ -2,6 +2,8 @@ package com.example.amdroidtestjava;
 
 import android.health.connect.datatypes.units.Length;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -16,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.amdroidtestjava.util.Utils;
 
 public class LinearActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener {
 
@@ -44,10 +48,15 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         radioGroup.setOnCheckedChangeListener(this);
 
         phoneNo = findViewById(R.id.phoneNo);
+        password = findViewById(R.id.password);
         //文本输入框 先触发焦点事件,再触发点击事件, 如果只使用点击事件 需要点两次才能触发. 所以要使用焦点事件
         phoneNo.setOnFocusChangeListener(this);
-        password = findViewById(R.id.password);
-        password.setOnFocusChangeListener(this);
+        //文本变化监听
+        //学习过程中发现无法在文本变化监听中获取是哪个view Id触发的,多个控件事件无法区分,所以采用这种方式
+        phoneNo.addTextChangedListener(new HideTextWatcher(phoneNo,11));
+        password.addTextChangedListener(new HideTextWatcher(password,6));
+
+
 
     }
 
@@ -84,5 +93,35 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         }
 
 
+    }
+
+    private class HideTextWatcher implements TextWatcher {
+
+        private EditText editText;
+
+        private int maxLength;
+
+        public HideTextWatcher(EditText editText, int i) {
+            this.editText = editText;
+            this.maxLength = i;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if(editable.length() == maxLength){
+                //隐藏软键盘
+                Utils.hideOneInputMethod(LinearActivity.this,editText);
+            }
+        }
     }
 }
