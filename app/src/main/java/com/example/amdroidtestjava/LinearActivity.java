@@ -1,5 +1,7 @@
 package com.example.amdroidtestjava;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.health.connect.datatypes.units.Length;
 import android.os.Bundle;
@@ -9,10 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,12 +28,19 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.amdroidtestjava.util.Utils;
 
-public class LinearActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener, View.OnClickListener {
+import java.util.Calendar;
+
+public class LinearActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener, View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
 
     EditText phoneNo;
     EditText password;
     TextView getResult;
+    DatePicker dpDate;
+    TextView showDate;
+    Button getDate;
+    TimePicker tpTime;
+    TextView showTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +76,23 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         alertDialog.setOnClickListener(this);
 
         getResult = findViewById(R.id.getResult);
+
+        dpDate = findViewById(R.id.dpDate);
+
+        showDate = findViewById(R.id.showDate);
+
+        getDate = findViewById(R.id.getDate);
+
+        tpTime = findViewById(R.id.tpTime);
+        //24小时制
+        tpTime.setIs24HourView(true);
+
+        getDate.setOnClickListener(this);
+
+        showDate.setOnClickListener(this);
+        showTime = findViewById(R.id.showTime);
+        showTime.setOnClickListener(this);
+
 
 
     }
@@ -135,8 +163,41 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         }
     }
 
+    //DatePickerDialog日期弹出框的监听
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month , int dayOdMonth) {
+        String  str = String.format("DatePickerDialog获取到的日期:%s年%s月%s日",year,month+1 , dayOdMonth) ;
+        showDate.setText(str);
+    }
+    //TimePickerDialog时间弹出框的监听
+    @Override
+    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+        String  selectTime = String.format("TimePickerDialog获取到的时间:%s时%s分",hour,minute);
+        showTime.setText(selectTime);
+    }
+
     @Override
     public void onClick(View view) {
+        if(view.getId() == R.id.getDate){
+            String  selectDate = String.format("DatePicker获取到的日期:%s年%s月%s日"
+                    ,dpDate.getYear(),dpDate.getMonth()+1 , dpDate.getDayOfMonth()) ;
+            String  selectTime = String.format("TimePicker获取到的时间:%s时%s分",tpTime.getHour(),tpTime.getMinute());
+            showDate.setText(selectDate);
+            showTime.setText(selectTime);
+            return;
+        }else if(view.getId() == R.id.showDate){
+            //Calendar calendar = Calendar.getInstance();
+            //弹窗的方式获取日期
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,this,Calendar.YEAR,Calendar.MONTH,Calendar.DAY_OF_MONTH);
+            datePickerDialog.show();
+            return;
+        }else if(view.getId() == R.id.showTime){
+            //弹出的方式获取时间
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,this,Calendar.HOUR,Calendar.MINUTE,true);
+            timePickerDialog.show();
+            return;
+        }
+
         //创建提醒对话的构造器
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //标题文本

@@ -127,9 +127,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="根据弹出对话框按钮展示不同返回结果"/>
-
-
-
+            <DatePicker
+                android:id="@+id/dpDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"/>
+            <TimePicker
+                android:id="@+id/tpTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner"/>
+            <TextView
+                android:id="@+id/showDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="显示选择的日期(点击我也可以弹出日期选择框,两种方式)"/>
+            <TextView
+                android:id="@+id/showTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="显示选择的时间(点击我也可以弹出时间选择框,两种方式)"/>
+            <Button
+                android:id="@+id/getDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取日期" />
 
         </LinearLayout>
     </ScrollView>
