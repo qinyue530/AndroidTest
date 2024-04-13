@@ -1,11 +1,15 @@
 package com.example.amdroidtestjava;
 
+import android.health.connect.datatypes.units.Length;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +17,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class LinearActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener {
+public class LinearActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener {
+
+
+    EditText phoneNo;
+    EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,12 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         //单选框
         RadioGroup radioGroup = findViewById(R.id.radioGroupTest);
         radioGroup.setOnCheckedChangeListener(this);
+
+        phoneNo = findViewById(R.id.phoneNo);
+        //文本输入框 先触发焦点事件,再触发点击事件, 如果只使用点击事件 需要点两次才能触发. 所以要使用焦点事件
+        phoneNo.setOnFocusChangeListener(this);
+        password = findViewById(R.id.password);
+        password.setOnFocusChangeListener(this);
 
     }
 
@@ -56,5 +70,19 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         }else if(i==R.id.man){
             textView.setText(str +"恭喜你是个男人");
         }
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        if(!b){
+            if(R.id.phoneNo == view.getId()){
+                if(null == phoneNo.getText()||phoneNo.getText().length() < 11){
+                    //弹出提示
+                    Toast.makeText(this,"请输入11位手机号码",Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+
     }
 }
