@@ -55,6 +55,7 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         password = findViewById(R.id.password);
         //文本输入框 先触发焦点事件,再触发点击事件, 如果只使用点击事件 需要点两次才能触发. 所以要使用焦点事件
         phoneNo.setOnFocusChangeListener(this);
+        password.setOnFocusChangeListener(this);
         //文本变化监听
         //学习过程中发现无法在文本变化监听中获取是哪个view Id触发的,多个控件事件无法区分,所以采用这种方式
         phoneNo.addTextChangedListener(new HideTextWatcher(phoneNo,11));
@@ -98,8 +99,8 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
                     Toast.makeText(this,"请输入11位手机号码",Toast.LENGTH_SHORT).show();
                 }
             }
+            Utils.hideOneInputMethod(LinearActivity.this,view);
         }
-
 
     }
 
