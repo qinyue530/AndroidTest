@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button sharedButton = findViewById(R.id.sharedButton);
+
+        view_click(sharedButton, new SharedActivity());
+
     }
 
     //view 点击事件

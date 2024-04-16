@@ -138,6 +138,14 @@
                 android:background="@drawable/btn_nine_selector"
                 android:text="My Button" />
 
+            <Button
+                android:id="@+id/sharedButton"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/shared" />
+
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
