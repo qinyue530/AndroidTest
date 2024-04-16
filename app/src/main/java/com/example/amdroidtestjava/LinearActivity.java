@@ -32,19 +32,19 @@ import java.util.Calendar;
 
 public class LinearActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener, View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    CheckBox checkBox = findViewById(R.id.checkBoxTest);
-    Switch switchTest = findViewById(R.id.switchTest);
-    EditText phoneNo = findViewById(R.id.phoneNo);
-    EditText password = findViewById(R.id.password);
-    TextView getResult = findViewById(R.id.getResult);
-    DatePicker dpDate = findViewById(R.id.dpDate);
-    TextView showDate = findViewById(R.id.showDate);
-    Button getDate = findViewById(R.id.getDate);
-    TimePicker tpTime = findViewById(R.id.tpTime);
-    TextView showTime = findViewById(R.id.showTime);
+    CheckBox checkBox;
+    Switch switchTest;
+    EditText phoneNo;
+    EditText password;
+    TextView getResult;
+    DatePicker dpDate;
+    TextView showDate;
+    Button getDate;
+    TimePicker tpTime;
+    TextView showTime;
     //弹出对话框
-    Button alertDialog = findViewById(R.id.alertDialog);
-    RadioGroup radioGroup = findViewById(R.id.radioGroupTest);
+    Button alertDialog;
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        initView();
         //复选框
         checkBox.setOnCheckedChangeListener(this);
         //switch开关
@@ -79,6 +80,22 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         showTime.setOnClickListener(this);
 
 
+    }
+
+    private void initView() {
+        checkBox = findViewById(R.id.checkBoxTest);
+        switchTest = findViewById(R.id.switchTest);
+        phoneNo = findViewById(R.id.phoneNo);
+        password = findViewById(R.id.password);
+        getResult = findViewById(R.id.getResult);
+        dpDate = findViewById(R.id.dpDate);
+        showDate = findViewById(R.id.showDate);
+        getDate = findViewById(R.id.getDate);
+        tpTime = findViewById(R.id.tpTime);
+        showTime = findViewById(R.id.showTime);
+        //弹出对话框
+        alertDialog = findViewById(R.id.alertDialog);
+        radioGroup = findViewById(R.id.radioGroupTest);
     }
 
     @Override
