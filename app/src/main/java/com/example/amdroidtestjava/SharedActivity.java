@@ -16,6 +16,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.amdroidtestjava.database.UserDBHelper;
+import com.example.amdroidtestjava.enity.User;
+import com.example.amdroidtestjava.util.Utils;
+
 public class SharedActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText eName;
@@ -27,6 +31,11 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
     Button deleteTable;
     TextView selectResult;
     String dbPath;
+    Button insertDB;
+    Button deleteDB;
+    Button updateDB;
+    Button selectDB;
+    UserDBHelper userDBHelper;
 
 
     @Override
@@ -40,6 +49,12 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             return insets;
         });
         intitView();
+        creatTable.setOnClickListener(this);
+        deleteTable.setOnClickListener(this);
+        insertDB.setOnClickListener(this);
+        deleteDB.setOnClickListener(this);
+        updateDB.setOnClickListener(this);
+        selectDB.setOnClickListener(this);
         submitInf.setOnClickListener(this);
         //指定配置文件的名称
         sharedPreferences = getSharedPreferences("sharedActivityConfig",MODE_PRIVATE);
@@ -47,8 +62,22 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         reloadSharedActivityConfig();
         //数据库路径
         dbPath = getFilesDir() + "/test.db";
-        creatTable.setOnClickListener(this);
-        deleteTable.setOnClickListener(this);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        userDBHelper = UserDBHelper.getInstance(this);
+        userDBHelper.openReadLink();
+        userDBHelper.openWriteLink();
+//        userDBHelper.onCreate(userDBHelper.getWritableDatabase());
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        userDBHelper.closeLink();
     }
 
     private void reloadSharedActivityConfig() {
@@ -69,10 +98,18 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         deleteTable = findViewById(R.id.deleteTable);
         creatTable = findViewById(R.id.creatTable);
         selectResult = findViewById(R.id.selectResult);
+        insertDB = findViewById(R.id.insertDB);
+        deleteDB = findViewById(R.id.deleteDB);
+        updateDB = findViewById(R.id.updateDB);
+        selectDB = findViewById(R.id.selectDB);
     }
 
     @Override
     public void onClick(View view) {
+        User user = new User();
+        user.setAge(eAge.getText().toString());
+        user.setName(eName.getText().toString());
+        user.setMarried(cMaried.isChecked());
         if(R.id.submitInf == view.getId()){
             String name = eName.getText().toString();
             String age = eAge.getText().toString();
@@ -88,8 +125,21 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
 
         }else if(R.id.deleteTable == view.getId()){
             boolean bool = deleteDatabase(dbPath);
-            String desc = String.format("数据库%s创建%s",dbPath,bool?"成功":"失败");
+            String desc = String.format("数据库%s删除%s",dbPath,bool?"成功":"失败");
             selectResult.setText(desc);
+
+        }else if(R.id.insertDB == view.getId()){
+
+            Long result = userDBHelper.insert(user);
+            String desc = String.format("插入数据: %s \n 结果%s",user,result>0?"成功":"失败");
+            selectResult.setText(desc);
+            Utils.toastShow(this,result>0?"成功":"失败");
+
+        }else if(R.id.deleteDB == view.getId()){
+
+        }else if(R.id.updateDB == view.getId()){
+
+        }else if(R.id.selectDB == view.getId()){
 
         }
 
