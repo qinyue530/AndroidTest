@@ -61,7 +61,56 @@
                 android:layout_height="wrap_content"
                 android:text="保存到共享参数"/>
 
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/creatTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="创建表"/>
+                <Button
+                    android:id="@+id/deleteTable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="删除表"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/insertDB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="插入数据"/>
+                <Button
+                    android:id="@+id/deleteDB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="删除数据"/>
+                <Button
+                    android:id="@+id/updateDB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="更新数据"/>
+                <Button
+                    android:id="@+id/selectDB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="查询数据"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/selectResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""/>
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>
