@@ -39,6 +39,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
     Button updateDB;
     Button selectDB;
     UserDBHelper userDBHelper;
+    Button acidButton;
 
 
     @Override
@@ -59,6 +60,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         updateDB.setOnClickListener(this);
         selectDB.setOnClickListener(this);
         submitInf.setOnClickListener(this);
+        acidButton.setOnClickListener(this);
         //指定配置文件的名称
         sharedPreferences = getSharedPreferences("sharedActivityConfig",MODE_PRIVATE);
         //获取配置文件
@@ -105,6 +107,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         deleteDB = findViewById(R.id.deleteDB);
         updateDB = findViewById(R.id.updateDB);
         selectDB = findViewById(R.id.selectDB);
+        acidButton = findViewById(R.id.acidButton);
     }
 
     @Override
@@ -155,6 +158,8 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             String  desc = String.format("查询数据结果为: \n" + userList.toString());
             selectResult.setText(desc);
 
+        }else if(R.id.acidButton == view.getId()){
+            userDBHelper.acidTest();
         }
 
 

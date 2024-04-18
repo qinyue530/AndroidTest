@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.amdroidtestjava.enity.User;
+import com.example.amdroidtestjava.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,6 +105,30 @@ public class UserDBHelper extends SQLiteOpenHelper {
             userList.add(queryUser);
         }
         return userList;
+    }
+
+    //事务控制
+    public void acidTest(){
+        try {
+            W_DATABASE.beginTransaction();
+            User userA = new User();
+            userA.setName("A");
+            userA.setAge("A");
+            userA.setMarried(true);
+            userDBHelper.insert(userA);
+            int i = 1 / 0;
+            User userB = new User();
+            userB.setName("B");
+            userB.setAge("B");
+            userB.setMarried(true);
+            userDBHelper.insert(userB);
+            W_DATABASE.setTransactionSuccessful();
+        }catch (Exception e){
+
+        }finally {
+            W_DATABASE.endTransaction();
+        }
+
     }
 
 
