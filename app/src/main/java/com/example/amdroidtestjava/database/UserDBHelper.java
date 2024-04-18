@@ -18,7 +18,9 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "USER_INFO";
     private static final String DB_NAME = "user.db";
-    private static final int DB_VERSION = 1;
+
+    //数据库版本升级 更新此版本号 会执行onUpgrade方法
+    private static final int DB_VERSION = 2;
     private static UserDBHelper userDBHelper;
     private static SQLiteDatabase R_DATABASE;
     private static SQLiteDatabase W_DATABASE;
@@ -65,11 +67,6 @@ public class UserDBHelper extends SQLiteOpenHelper {
                 "AGE VARCHAR NOT NULL," +
                 "MARRIED INTEGER NOT NULL);";
         sqLiteDatabase.execSQL(sql);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
     }
 
     public Long insert(User user){
@@ -129,6 +126,15 @@ public class UserDBHelper extends SQLiteOpenHelper {
             W_DATABASE.endTransaction();
         }
 
+    }
+
+    ////数据库版本升级 更新DB_VERSION版本号 会执行onUpgrade方法
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        String sql = "ALTER TABLE "+ TABLE_NAME +" ADD COLUMN PHONE VARCHAR;";
+        sqLiteDatabase.execSQL(sql);
+        sql = "ALTER TABLE "+ TABLE_NAME +" ADD COLUMN  PASSWORD VARCHAR;";
+        sqLiteDatabase.execSQL(sql);
     }
 
 
