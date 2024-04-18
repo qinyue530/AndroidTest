@@ -54,6 +54,6 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age='" + age + '\'' +
                 ", married=" + married +
-                '}';
+                '}'+'\n';
     }
 }

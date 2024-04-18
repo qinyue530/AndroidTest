@@ -2,6 +2,7 @@ package com.example.amdroidtestjava;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.amdroidtestjava.database.UserDBHelper;
 import com.example.amdroidtestjava.enity.User;
 import com.example.amdroidtestjava.util.Utils;
+
+import java.util.List;
 
 public class SharedActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -136,10 +139,21 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             Utils.toastShow(this,result>0?"成功":"失败");
 
         }else if(R.id.deleteDB == view.getId()){
+            int result = userDBHelper.deleteByNameAndAge(user);
+            String desc = String.format("删除数据: %s \n 结果%s",user,result>0?"成功":"失败");
+            selectResult.setText(desc);
+            Utils.toastShow(this,result>0?"成功":"失败");
 
         }else if(R.id.updateDB == view.getId()){
+            int result = userDBHelper.updateByName(user);
+            String desc = String.format("修改数据: %s \n 结果%s",user,result>0?"成功":"失败");
+            selectResult.setText(desc);
+            Utils.toastShow(this,result>0?"成功":"失败");
 
         }else if(R.id.selectDB == view.getId()){
+            List<User> userList = userDBHelper.selectByName(user);
+            String  desc = String.format("查询数据结果为: \n" + userList.toString());
+            selectResult.setText(desc);
 
         }
 
