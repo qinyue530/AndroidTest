@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,8 +21,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.amdroidtestjava.database.UserDBHelper;
 import com.example.amdroidtestjava.enity.User;
+import com.example.amdroidtestjava.util.FileUtils;
 import com.example.amdroidtestjava.util.Utils;
 
+import java.io.File;
 import java.util.List;
 
 public class SharedActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,8 +44,12 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
     Button selectDB;
     UserDBHelper userDBHelper;
     Button acidButton;
+    Button internalStorage;
+    Button internalStorageQuery;
 
+    String internalStoragePath = "";
 
+    String internalStorageName = System.currentTimeMillis()+".txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +61,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             return insets;
         });
         intitView();
-        creatTable.setOnClickListener(this);
-        deleteTable.setOnClickListener(this);
-        insertDB.setOnClickListener(this);
-        deleteDB.setOnClickListener(this);
-        updateDB.setOnClickListener(this);
-        selectDB.setOnClickListener(this);
-        submitInf.setOnClickListener(this);
-        acidButton.setOnClickListener(this);
+        intitViewOnClickListener();
         //指定配置文件的名称
         sharedPreferences = getSharedPreferences("sharedActivityConfig",MODE_PRIVATE);
         //获取配置文件
@@ -76,7 +77,6 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         userDBHelper = UserDBHelper.getInstance(this);
         userDBHelper.openReadLink();
         userDBHelper.openWriteLink();
-//        userDBHelper.onCreate(userDBHelper.getWritableDatabase());
     }
 
     @Override
@@ -108,6 +108,21 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         updateDB = findViewById(R.id.updateDB);
         selectDB = findViewById(R.id.selectDB);
         acidButton = findViewById(R.id.acidButton);
+        internalStorage = findViewById(R.id.internalStorage);
+        internalStorageQuery = findViewById(R.id.internalStorageQuery);
+    }
+
+    private void intitViewOnClickListener() {
+        creatTable.setOnClickListener(this);
+        deleteTable.setOnClickListener(this);
+        insertDB.setOnClickListener(this);
+        deleteDB.setOnClickListener(this);
+        updateDB.setOnClickListener(this);
+        selectDB.setOnClickListener(this);
+        submitInf.setOnClickListener(this);
+        acidButton.setOnClickListener(this);
+        internalStorage.setOnClickListener(this);
+        internalStorageQuery.setOnClickListener(this);
     }
 
     @Override
@@ -128,38 +143,47 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(dbPath, Context.MODE_PRIVATE, null);
             String desc = String.format("数据库%s创建%s",dbPath,(sqLiteDatabase==null)?"失败":"成功");
             selectResult.setText(desc);
-
         }else if(R.id.deleteTable == view.getId()){
             boolean bool = deleteDatabase(dbPath);
             String desc = String.format("数据库%s删除%s",dbPath,bool?"成功":"失败");
             selectResult.setText(desc);
-
         }else if(R.id.insertDB == view.getId()){
-
             Long result = userDBHelper.insert(user);
             String desc = String.format("插入数据: %s \n 结果%s",user,result>0?"成功":"失败");
             selectResult.setText(desc);
             Utils.toastShow(this,result>0?"成功":"失败");
-
         }else if(R.id.deleteDB == view.getId()){
             int result = userDBHelper.deleteByNameAndAge(user);
             String desc = String.format("删除数据: %s \n 结果%s",user,result>0?"成功":"失败");
             selectResult.setText(desc);
             Utils.toastShow(this,result>0?"成功":"失败");
-
         }else if(R.id.updateDB == view.getId()){
             int result = userDBHelper.updateByName(user);
             String desc = String.format("修改数据: %s \n 结果%s",user,result>0?"成功":"失败");
             selectResult.setText(desc);
             Utils.toastShow(this,result>0?"成功":"失败");
-
         }else if(R.id.selectDB == view.getId()){
             List<User> userList = userDBHelper.selectByName(user);
             String  desc = String.format("查询数据结果为: \n" + userList.toString());
             selectResult.setText(desc);
-
         }else if(R.id.acidButton == view.getId()){
+            //事务
             userDBHelper.acidTest();
+        }else if(R.id.internalStorage == view.getId()){
+            //外部存储的私有空间
+            internalStoragePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(user.toString());
+            FileUtils.savText(internalStoragePath+ File.separatorChar+internalStorageName , stringBuilder.toString());
+            Log.e("qinyue文件存储", internalStoragePath+ File.separatorChar+internalStorageName );
+            Utils.toastShow(this,"外部空间存储成功");
+
+        }else if(R.id.internalStorageQuery == view.getId()){
+            String desc = FileUtils.openText(internalStoragePath+ File.separatorChar+internalStorageName);
+            Log.e("qinyue文件读取", internalStoragePath+ File.separatorChar+internalStorageName );
+            selectResult.setText(desc);
+            Utils.toastShow(this,"外部空间查询成功");
+
         }
 
 
