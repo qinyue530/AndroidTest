@@ -171,7 +171,9 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             userDBHelper.acidTest();
         }else if(R.id.internalStorage == view.getId()){
             //外部存储的私有空间
-            internalStoragePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString();
+            //internalStoragePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString();
+            //外部存储的公共空间 需要在 AndroidManifest中配置权限
+            internalStoragePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(user.toString());
             FileUtils.savText(internalStoragePath+ File.separatorChar+internalStorageName , stringBuilder.toString());
