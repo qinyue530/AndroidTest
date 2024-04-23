@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -46,8 +50,13 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
     Button acidButton;
     Button internalStorage;
     Button internalStorageQuery;
-
     String internalStoragePath = "";
+    String saveImagePath = "";
+    String imageName = "";
+    Button saveImage;
+    Button getImage;
+    ImageView openImageResult;
+
 
     String internalStorageName = System.currentTimeMillis()+".txt";
     @Override
@@ -110,6 +119,9 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         acidButton = findViewById(R.id.acidButton);
         internalStorage = findViewById(R.id.internalStorage);
         internalStorageQuery = findViewById(R.id.internalStorageQuery);
+        saveImage = findViewById(R.id.saveImage);
+        getImage = findViewById(R.id.getImage);
+        openImageResult = findViewById(R.id.openImageResult);
     }
 
     private void intitViewOnClickListener() {
@@ -123,6 +135,8 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         acidButton.setOnClickListener(this);
         internalStorage.setOnClickListener(this);
         internalStorageQuery.setOnClickListener(this);
+        saveImage.setOnClickListener(this);
+        getImage.setOnClickListener(this);
     }
 
     @Override
@@ -185,7 +199,27 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             Log.e("qinyue文件读取", internalStoragePath+ File.separatorChar+internalStorageName );
             selectResult.setText(desc);
             Utils.toastShow(this,"外部空间查询成功");
-
+        }else if(R.id.saveImage == view.getId()){
+            imageName = "tigger.png";
+            //外部存储的私有空间
+            saveImagePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString()+imageName;
+            //从指定资源中获取位图对象
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.tigger);
+            FileUtils.saveImage(saveImagePath,bitmap);
+            Utils.toastShow(this,"图片保存成功");
+        }else if(R.id.getImage == view.getId()){
+            imageName = "tigger.png";
+            saveImagePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString()+imageName;
+            //三种获取图片的方式
+            //第一种
+            //Bitmap bitmap = FileUtils.openImage(saveImagePath);
+            //openImageResult.setImageBitmap(bitmap);
+            //第二种
+            //Bitmap bitmap = BitmapFactory.decodeFile(saveImagePath);
+            //openImageResult.setImageBitmap(bitmap);
+            //第三种
+            openImageResult.setImageURI(Uri.parse(saveImagePath));
+            Utils.toastShow(this,"图片获取成功");
         }
 
 
