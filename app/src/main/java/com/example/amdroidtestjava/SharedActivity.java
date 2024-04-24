@@ -1,5 +1,6 @@
 package com.example.amdroidtestjava;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -56,6 +57,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
     Button saveImage;
     Button getImage;
     ImageView openImageResult;
+    MyApplication myApplication;
 
 
     String internalStorageName = System.currentTimeMillis()+".txt";
@@ -77,6 +79,14 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         reloadSharedActivityConfig();
         //数据库路径
         dbPath = getFilesDir() + "/test.db";
+        //获取全局变量-在内存中获取
+        myApplication = MyApplication.getInstance();
+        if(null!=myApplication.infoMap&&myApplication.infoMap.get("age")!=null){
+            eAge.setText(myApplication.infoMap.get("age"));
+        }
+        if(null!=myApplication.infoMap&&myApplication.infoMap.get("name")!=null){
+            eName.setText(myApplication.infoMap.get("name"));
+        }
 
     }
 
@@ -144,7 +154,10 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         User user = new User();
         user.setAge(eAge.getText().toString());
         user.setName(eName.getText().toString());
-        user.setMarried(cMaried.isChecked());
+        //存储全局变量-放在内存中
+        myApplication = MyApplication.getInstance();
+        myApplication.infoMap.put("name",eName.getText().toString());
+        myApplication.infoMap.put("age",eAge.getText().toString());
         if(R.id.submitInf == view.getId()){
             String name = eName.getText().toString();
             String age = eAge.getText().toString();
