@@ -122,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
         view_click(sharedButton, new SharedActivity());
 
+        Button roomButton = findViewById(R.id.roomButton);
+
+        view_click(roomButton,new JetpackRoomActivity());
+
     }
 
     //view 点击事件
