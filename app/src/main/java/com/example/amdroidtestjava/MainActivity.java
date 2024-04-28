@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView helloWorld = findViewById(R.id.helloWorld);
-        helloWorld.setText("秦跃,Android学习!");
+        helloWorld.setText("HELLO WORLD!");
         //Java设置字体大小默认为sp 会随着系统设置的字体大小改变
         helloWorld.setTextSize(30);
         //设置字体颜色

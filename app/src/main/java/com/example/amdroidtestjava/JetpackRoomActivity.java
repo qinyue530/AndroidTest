@@ -18,12 +18,14 @@ import com.example.amdroidtestjava.dao.RoomUserDao;
 import com.example.amdroidtestjava.database.RoomUserDatabase;
 import com.example.amdroidtestjava.enity.RoomUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JetpackRoomActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText roomName;
     EditText roomAge;
+    EditText roomId;
     CheckBox roomMaried;
     Button insertRoomUser;
     Button deleteRoomUser;
@@ -34,9 +36,6 @@ public class JetpackRoomActivity extends AppCompatActivity implements View.OnCli
     TextView roomResult;
     RoomUserDatabase roomUserDatabase;
     RoomUserDao roomUserDao;
-    int roomUserId;
-
-    RoomUser roomUser = new RoomUser();
 
 
     @Override
@@ -60,6 +59,7 @@ public class JetpackRoomActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initView() {
+        roomId = findViewById(R.id.roomId);
         roomAge = findViewById(R.id.roomAge);
         roomName = findViewById(R.id.roomName);
         roomMaried = findViewById(R.id.roomMaried);
@@ -84,28 +84,44 @@ public class JetpackRoomActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
+        List<RoomUser> roomUserList = new ArrayList<>();
+        String id = roomId.getText().toString();
         String name = roomName.getText().toString();
         String age = roomAge.getText().toString();
         Boolean married = roomMaried.isActivated();
+        RoomUser roomUser = new RoomUser();
         roomUser.setMarried(married);
         roomUser.setAge(age);
         roomUser.setName(name);
-        roomUser.setId(roomUserId);
+        if(null != id && !"".equals(id.trim())){
+            roomUser.setId(Integer.valueOf(id));
+        }
+
         if(view.getId() == insertRoomUser.getId()){
-            roomUserDao.insert(roomUser);
+            RoomUser insertRoomUSer = new RoomUser();
+            insertRoomUSer.setName(name);
+            insertRoomUSer.setAge(age);
+            insertRoomUSer.setMarried(married);
+            roomUserDao.insert(insertRoomUSer);
         }else if(view.getId() == deleteRoomUser.getId()){
             roomUserDao.delete(roomUser);
         }else if(view.getId() == updateRoomUser.getId()){
             roomUserDao.update(roomUser);
         }else if(view.getId() == selectRoomUser.getId()){
-            roomUser = roomUserDao.queryByName(name).get(0);
-            roomUserId = roomUser.getId();
+            roomUserList = roomUserDao.queryByName(name);
         }else if(view.getId() == queryAllRoomUser.getId()){
-            roomUser = roomUserDao.queryAll().get(0);
-            roomUserId = roomUser.getId();
+            roomUserList = roomUserDao.queryAll();
         }else if(view.getId() == delAllRoomUser.getId()){
             roomUserDao.deleteAll();
         }
+        if(null != roomUserList && roomUserList.size()>0){
+            roomUser = roomUserList.get(0);
+            roomId.setText(String.valueOf(roomUser.getId()));
+            roomName.setText(roomUser.getName());
+            roomAge.setText(roomUser.getAge());
+            roomMaried.setActivated(roomUser.getMarried());
+        }
+
 
     }
 }
