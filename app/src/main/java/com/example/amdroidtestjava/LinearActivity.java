@@ -57,6 +57,14 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
             return insets;
         });
         initView();
+        intitViewListener();
+
+
+
+    }
+
+
+    private void intitViewListener() {
         //复选框
         checkBox.setOnCheckedChangeListener(this);
         //switch开关
@@ -78,8 +86,6 @@ public class LinearActivity extends AppCompatActivity implements CompoundButton.
         getDate.setOnClickListener(this);
         showDate.setOnClickListener(this);
         showTime.setOnClickListener(this);
-
-
     }
 
     private void initView() {
