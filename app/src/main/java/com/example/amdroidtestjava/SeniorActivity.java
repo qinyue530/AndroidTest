@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
@@ -12,7 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.amdroidtestjava.adapter.MyBaseAdapter;
+import com.example.amdroidtestjava.enity.MyBaseEntity;
 import com.example.amdroidtestjava.util.Utils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SeniorActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -21,6 +29,10 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
     Spinner baseSpinner ;
 
     Spinner spinnerDialog;
+
+    Spinner simpleAdapterSpinner;
+
+    Spinner baseAdapterSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +51,36 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
         baseSpinner.setAdapter(arrayAdapter);
         //设置默认项
         baseSpinner.setSelection(0);
-
+        //
         spinnerDialog.setPrompt("请选择");
         spinnerDialog.setSelection(0);
         spinnerDialog.setAdapter(arrayAdapter);
+        //SimpleAdapter
+        List<MyBaseEntity> myBaseEntityList =new ArrayList<>();
+        List<Map<String,Object>> mapList = new ArrayList<>();
+        for(String str : item){
+            Map<String , Object> map = new HashMap<>();
+            map.put("icon", R.drawable.tigger);
+            map.put("name",str);
+            mapList.add(map);
+
+            MyBaseEntity myBaseEntity = new MyBaseEntity();
+            myBaseEntity.setIcon(R.drawable.tigger);
+            myBaseEntity.setName(str);
+            myBaseEntity.setDesc("获取的是:"+str);
+            myBaseEntityList.add(myBaseEntity);
+        }
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this,mapList,R.layout.item_simple
+                ,new String[]{"icon","name"},new int[]{R.id.icon,R.id.name});
+        simpleAdapterSpinner.setAdapter(simpleAdapter);
+        simpleAdapterSpinner.setSelection(0);
+        simpleAdapterSpinner.setPrompt("请选择");
+        //baseAdapter
+        MyBaseAdapter myBaseAdapter = new MyBaseAdapter(this,myBaseEntityList);
+        baseAdapterSpinner.setAdapter(myBaseAdapter);
+        baseAdapterSpinner.setSelection(0);
+        baseAdapterSpinner.setPrompt("请选择");
+
     }
 
     private void initViewListener() {
@@ -52,6 +90,8 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
     private void initView() {
         baseSpinner = findViewById(R.id.baseSpinner);
         spinnerDialog = findViewById(R.id.spinnerDialog);
+        simpleAdapterSpinner = findViewById(R.id.simpleAdapterSpinner);
+        baseAdapterSpinner = findViewById(R.id.baseAdapterSpinner);
     }
 
     @Override
