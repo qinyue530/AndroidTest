@@ -130,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
 
         view_click(permissionButton,new PermissionActivity());
 
+        Button seniorButton = findViewById(R.id.seniorButton);
+
+        view_click(seniorButton,new SeniorActivity());
+
     }
 
     //view 点击事件
