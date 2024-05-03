@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
@@ -22,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SeniorActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class SeniorActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
     private static final String[] item = new String[]{"AAA","BBB","CCC"};
 
@@ -33,6 +34,8 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
     Spinner simpleAdapterSpinner;
 
     Spinner baseAdapterSpinner;
+
+    ListView myListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +84,13 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
         baseAdapterSpinner.setSelection(0);
         baseAdapterSpinner.setPrompt("请选择");
 
+        myListView.setAdapter(myBaseAdapter);
+
     }
 
     private void initViewListener() {
         baseSpinner.setOnItemSelectedListener(this);
+        myListView.setOnItemClickListener(this);
     }
 
     private void initView() {
@@ -92,6 +98,7 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
         spinnerDialog = findViewById(R.id.spinnerDialog);
         simpleAdapterSpinner = findViewById(R.id.simpleAdapterSpinner);
         baseAdapterSpinner = findViewById(R.id.baseAdapterSpinner);
+        myListView = findViewById(R.id.myListView);
     }
 
     @Override
@@ -107,5 +114,10 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Utils.toastShow(this,"您选择的是"+ item[i]);
     }
 }

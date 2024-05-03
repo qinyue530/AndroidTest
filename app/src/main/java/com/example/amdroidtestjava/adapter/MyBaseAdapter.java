@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.amdroidtestjava.R;
 import com.example.amdroidtestjava.enity.MyBaseEntity;
+import com.example.amdroidtestjava.util.Utils;
 
 import java.util.List;
 
@@ -47,6 +49,7 @@ public class MyBaseAdapter extends BaseAdapter {
             holder.icon = view.findViewById(R.id.base_icon);
             holder.name = view.findViewById(R.id.base_name);
             holder.desc = view.findViewById(R.id.base_desc);
+            holder.baseButton = view.findViewById(R.id.base_button);
             //将视图持有者保存到转换视图中
             view.setTag(holder);
         }else{
@@ -57,6 +60,9 @@ public class MyBaseAdapter extends BaseAdapter {
         holder.icon.setImageResource(myBaseEntity.getIcon());
         holder.name.setText(myBaseEntity.getName());
         holder.desc.setText(myBaseEntity.getDesc());
+        holder.baseButton.setOnClickListener(view1 -> {
+            Utils.toastShow(context,"列表中的按钮:您选择的是"+ myBaseEntity.getName());
+        });
         return  view;
     }
 
@@ -65,5 +71,7 @@ public class MyBaseAdapter extends BaseAdapter {
 
         public TextView name;
         public TextView desc;
+
+        public Button baseButton;
     }
 }

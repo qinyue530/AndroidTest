@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants">
+    <!-- blocksDescendants 阻止下级控件获取焦点,避免阻塞列表视图的点击事件 -->
     <ImageView
         android:id="@+id/base_icon"
         android:layout_width="0dp"
@@ -31,5 +33,11 @@
             tools:text="BBB"/>
 
     </LinearLayout>
+    <Button
+        android:id="@+id/base_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击"
+        />
 
 </LinearLayout>
