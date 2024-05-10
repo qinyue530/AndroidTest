@@ -167,6 +167,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             editor.putString("age",age);
             editor.putBoolean("married",cMaried.isChecked());
             editor.commit();
+            Utils.toastShow(this,"成功");
         }else if(R.id.creatTable == view.getId()){
             SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(dbPath, Context.MODE_PRIVATE, null);
             String desc = String.format("数据库%s创建%s",dbPath,(sqLiteDatabase==null)?"失败":"成功");

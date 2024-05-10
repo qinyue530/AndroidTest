@@ -88,11 +88,12 @@ public class JetpackRoomActivity extends AppCompatActivity implements View.OnCli
         String id = roomId.getText().toString();
         String name = roomName.getText().toString();
         String age = roomAge.getText().toString();
-        Boolean married = roomMaried.isActivated();
+        Boolean married = roomMaried.isChecked();
         RoomUser roomUser = new RoomUser();
         roomUser.setMarried(married);
         roomUser.setAge(age);
         roomUser.setName(name);
+
         if(null != id && !"".equals(id.trim())){
             roomUser.setId(Integer.valueOf(id));
         }
@@ -120,6 +121,9 @@ public class JetpackRoomActivity extends AppCompatActivity implements View.OnCli
             roomName.setText(roomUser.getName());
             roomAge.setText(roomUser.getAge());
             roomMaried.setActivated(roomUser.getMarried());
+            roomResult.setText(roomUserList.toString());
+        }else{
+            roomResult.setText("");
         }
 
 
