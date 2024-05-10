@@ -154,6 +154,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
         User user = new User();
         user.setAge(eAge.getText().toString());
         user.setName(eName.getText().toString());
+        user.setMarried(cMaried.isChecked());
         //存储全局变量-放在内存中
         myApplication = MyApplication.getInstance();
         myApplication.infoMap.put("name",eName.getText().toString());
@@ -219,6 +220,7 @@ public class SharedActivity extends AppCompatActivity implements View.OnClickLis
             //从指定资源中获取位图对象
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.tigger);
             FileUtils.saveImage(saveImagePath,bitmap);
+            Log.e("图片存储路径",saveImagePath.toString());
             Utils.toastShow(this,"图片保存成功");
         }else if(R.id.getImage == view.getId()){
             imageName = "tigger.png";

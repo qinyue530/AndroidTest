@@ -113,13 +113,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="内部存储"/>
+                    android:text="外部存储"/>
                 <Button
                     android:id="@+id/internalStorageQuery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="内部存储查询"/>
+                    android:text="外部存储查询"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
