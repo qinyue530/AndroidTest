@@ -159,6 +159,11 @@
                 android:layout_width="120dp"
                 android:layout_height="50dp"
                 android:text="高级控件" />
+            <Button
+                android:id="@+id/gridViewButton"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="gridView" />
 
 
         </LinearLayout>

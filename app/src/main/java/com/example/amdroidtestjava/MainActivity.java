@@ -134,6 +134,10 @@ public class MainActivity extends AppCompatActivity {
 
         view_click(seniorButton,new SeniorActivity());
 
+        Button gridViewButton = findViewById(R.id.gridViewButton);
+
+        view_click(gridViewButton,new GridViewActivity());
+
     }
 
     //view 点击事件

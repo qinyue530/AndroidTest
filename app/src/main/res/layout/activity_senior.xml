@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SeniorActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,52 +16,58 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="下拉框模式的列表"/>
+                    android:text="下拉框模式的列表" />
+
                 <Spinner
                     android:id="@+id/baseSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    />
+                    android:spinnerMode="dropdown" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="对话框模式的列表"/>
+                    android:text="对话框模式的列表" />
+
                 <Spinner
                     android:id="@+id/spinnerDialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="对话框模式的列表simpleAdapter"/>
+                    android:text="对话框模式的列表simpleAdapter" />
+
                 <Spinner
                     android:id="@+id/simpleAdapterSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
@@ -68,20 +75,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="对话框模式的列表baseAdapter"/>
+                    android:text="对话框模式的列表baseAdapter" />
+
                 <Spinner
                     android:id="@+id/baseAdapterSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <ListView
         android:id="@+id/myListView"
         android:layout_width="match_parent"
@@ -89,8 +98,5 @@
         android:divider="@null"
         android:dividerHeight="0dp">
         <!--divider 分隔线 -->
-
     </ListView>
-
-
 </LinearLayout>

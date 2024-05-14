@@ -25,49 +25,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SeniorActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+public class GridViewActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 
     private static final String[] item = new String[]{"AAA","BBB","CCC","DDD","EEE","FFF","GGG","HHH","III","JJJ","KKK","LLL"};
-
-    Spinner baseSpinner ;
-
-    Spinner spinnerDialog;
-
-    Spinner simpleAdapterSpinner;
-
-    Spinner baseAdapterSpinner;
-
-    ListView myListView;
+    GridView myGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_senior);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.senior), (v, insets) -> {
+        setContentView(R.layout.activity_grid_view);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.myGridViewActivity), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
         initView();
         initViewListener();
-        //声明下拉列表的数组适配器
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,R.layout.item_select,item);
-        baseSpinner.setAdapter(arrayAdapter);
-        //设置默认项
-        baseSpinner.setSelection(0);
-        //
-        spinnerDialog.setPrompt("请选择");
-        spinnerDialog.setSelection(0);
-        spinnerDialog.setAdapter(arrayAdapter);
         //SimpleAdapter
         List<MyBaseEntity> myBaseEntityList =new ArrayList<>();
-        List<Map<String,Object>> mapList = new ArrayList<>();
         for(String str : item){
-            Map<String , Object> map = new HashMap<>();
-            map.put("icon", R.drawable.tigger);
-            map.put("name",str);
-            mapList.add(map);
 
             MyBaseEntity myBaseEntity = new MyBaseEntity();
             myBaseEntity.setIcon(R.drawable.tigger);
@@ -75,33 +52,18 @@ public class SeniorActivity extends AppCompatActivity implements View.OnClickLis
             myBaseEntity.setDesc("获取的是:"+str);
             myBaseEntityList.add(myBaseEntity);
         }
-        SimpleAdapter simpleAdapter = new SimpleAdapter(this,mapList,R.layout.item_simple
-                ,new String[]{"icon","name"},new int[]{R.id.icon,R.id.name});
-        simpleAdapterSpinner.setAdapter(simpleAdapter);
-        simpleAdapterSpinner.setSelection(0);
-        simpleAdapterSpinner.setPrompt("请选择");
-        //baseAdapter
-        MyBaseAdapter myBaseAdapter = new MyBaseAdapter(this,myBaseEntityList);
-        baseAdapterSpinner.setAdapter(myBaseAdapter);
-        baseAdapterSpinner.setSelection(0);
-        baseAdapterSpinner.setPrompt("请选择");
-        //ListView
-        MyBaseAdapter myListBaseAdapter = new MyBaseAdapter(this,myBaseEntityList);
-        myListView.setAdapter(myListBaseAdapter);
+        //GridView
+        MyGridBaseAdapter myGridBaseAdapter = new MyGridBaseAdapter(this,myBaseEntityList);
+        myGridView.setAdapter(myGridBaseAdapter);
 
     }
 
     private void initViewListener() {
-        baseSpinner.setOnItemSelectedListener(this);
-        myListView.setOnItemClickListener(this);
+        myGridView.setOnItemClickListener(this);
     }
 
     private void initView() {
-        baseSpinner = findViewById(R.id.baseSpinner);
-        spinnerDialog = findViewById(R.id.spinnerDialog);
-        simpleAdapterSpinner = findViewById(R.id.simpleAdapterSpinner);
-        baseAdapterSpinner = findViewById(R.id.baseAdapterSpinner);
-        myListView = findViewById(R.id.myListView);
+        myGridView = findViewById(R.id.myGridView);
     }
 
     @Override
