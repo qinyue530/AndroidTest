@@ -164,6 +164,12 @@
                 android:layout_width="120dp"
                 android:layout_height="50dp"
                 android:text="gridView" />
+            <Button
+                android:id="@+id/viewPagerButton"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="ViewPager" />
+
 
 
         </LinearLayout>

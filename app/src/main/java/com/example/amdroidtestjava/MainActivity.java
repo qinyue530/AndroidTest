@@ -138,6 +138,10 @@ public class MainActivity extends AppCompatActivity {
 
         view_click(gridViewButton,new GridViewActivity());
 
+        Button viewPagerButton = findViewById(R.id.viewPagerButton);
+
+        view_click(viewPagerButton , new ViewPagerActivity());
+
     }
 
     //view 点击事件
