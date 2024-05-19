@@ -48,7 +48,8 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         }
         ViewPagerAdapter  viewPagerAdapter = new ViewPagerAdapter(this , myBaseEntityList);
         myViewPager.setAdapter(viewPagerAdapter);
-
+        //设置默认选择展示的图片,如不设置默认为第0个
+        myViewPager.setCurrentItem(3);
         initPagerStrip();
     }
 
