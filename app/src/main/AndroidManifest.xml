@@ -55,6 +55,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LaunchSimpleActivity"
             android:exported="true">
 
             <!-- exported 是否允许其他的应用启动本应用 -->
