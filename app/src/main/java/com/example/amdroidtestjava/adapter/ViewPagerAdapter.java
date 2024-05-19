@@ -8,6 +8,7 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.amdroidtestjava.ViewPagerActivity;
@@ -64,5 +65,12 @@ public class ViewPagerAdapter  extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView(imageViewList.get(position));
 //        super.destroyItem(container, position, object);
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return myBaseEntityList.get(position).getName();
+//        return super.getPageTitle(position);
     }
 }

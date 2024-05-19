@@ -1,6 +1,8 @@
 package com.example.amdroidtestjava;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -8,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager.widget.PagerTabStrip;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.amdroidtestjava.adapter.ViewPagerAdapter;
@@ -21,6 +24,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
 
     private static final String[] item = new String[]{"AAA","BBB","CCC","DDD","EEE","FFF","GGG","HHH","III","JJJ","KKK","LLL"};
     ViewPager myViewPager;
+    PagerTabStrip myPagerTabStrip;
     List<MyBaseEntity> myBaseEntityList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +48,20 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         }
         ViewPagerAdapter  viewPagerAdapter = new ViewPagerAdapter(this , myBaseEntityList);
         myViewPager.setAdapter(viewPagerAdapter);
+
+        initPagerStrip();
+    }
+
+    //初始化翻页标签栏
+    private void initPagerStrip() {
+        //设置翻页标签栏的文本大小
+        myPagerTabStrip.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+        myPagerTabStrip.setTextColor(Color.BLACK);
     }
 
     private void initView() {
         myViewPager = findViewById(R.id.myViewPager);
+        myPagerTabStrip = findViewById(R.id.myPagerTabStrip);
     }
 
     private void initViewOnListener() {
