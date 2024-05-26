@@ -142,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
         view_click(viewPagerButton , new ViewPagerActivity());
 
+        Button h5Button = findViewById(R.id.h5Button);
+
+        view_click(h5Button,new JavaAndJsCallActivity());
+
     }
 
     //view 点击事件

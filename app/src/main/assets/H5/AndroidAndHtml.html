@@ -1,0 +1,26 @@
+<!--文档声明 告诉浏览器为h5-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>H5与安卓交互</title>
+</head>
+<body>
+<header>
+    <h1>H5与安卓交互</h1>
+</header>
+<div>
+    <button  onclick="submitOpenAcct()">Js调用安卓</button>
+</div>
+<script type="text/javascript">
+
+    function javaCallJs(arg){
+        alert(arg.arg)
+    };
+    function submitOpenAcct() {
+        var result = window.JsCallAndroid.callFromJs("Js调用安卓");
+        alert(result)
+    };
+</script>
+</body>
+</html>
