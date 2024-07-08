@@ -58,6 +58,7 @@ public class OpenLaunchAdapter extends PagerAdapter {
                     public void onClick(View v) {
                         Intent intent = new Intent();
                         ComponentName componentName = new ComponentName(context,new MainActivity().getClass());
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setComponent(componentName);
                         context.startActivity(intent);
 //                        Utils.toastShow(context,"--------------");
