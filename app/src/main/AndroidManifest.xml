@@ -22,9 +22,6 @@
             android:name=".JavaAndJsCallActivity"
             android:exported="false" />
         <activity
-            android:name=".MyH5Activity"
-            android:exported="false" />
-        <activity
             android:name=".ViewPagerActivity"
             android:exported="false" />
         <activity
