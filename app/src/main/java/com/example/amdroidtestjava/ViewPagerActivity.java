@@ -3,18 +3,21 @@ package com.example.amdroidtestjava;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.widget.Toast;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerTabStrip;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.amdroidtestjava.adapter.ViewPagerAdapter;
 import com.example.amdroidtestjava.enity.MyBaseEntity;
+import com.example.amdroidtestjava.fragement.StaticFragement;
 import com.example.amdroidtestjava.util.Utils;
 
 import java.util.ArrayList;
@@ -26,6 +29,8 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     ViewPager myViewPager;
     PagerTabStrip myPagerTabStrip;
     List<MyBaseEntity> myBaseEntityList = new ArrayList<>();
+
+    View fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,14 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         //设置默认选择展示的图片,如不设置默认为第0个
         myViewPager.setCurrentItem(3);
         initPagerStrip();
+
+        StaticFragement fragment = new StaticFragement();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragementStatic, fragment);
+        fragmentTransaction.commit();
+
+
     }
 
     //初始化翻页标签栏

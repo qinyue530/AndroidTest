@@ -14,4 +14,5 @@
             android:targetClass="com.example.amdroidtestjava.GridActivity" />
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
+
 </shortcuts>

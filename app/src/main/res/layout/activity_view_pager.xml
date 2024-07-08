@@ -18,5 +18,10 @@
             android:layout_height="wrap_content">
         </androidx.viewpager.widget.PagerTabStrip>
     </androidx.viewpager.widget.ViewPager>
+    
+    <FrameLayout
+        android:id="@+id/fragementStatic"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
 
 </LinearLayout>
